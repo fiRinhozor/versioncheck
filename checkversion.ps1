@@ -43,6 +43,29 @@ function Get-NotepadPPVersion {
     }
 }
 
+function Get-PowerBIVersion {
+    $url = "https://www.microsoft.com/en-us/download/details.aspx?id=58494"
+    try {
+        $response = Invoke-WebRequest -Uri $url
+        $html = $response.Content
+        Write-Host "✅ Successfully fetched Power BI page."
+
+        # Extract version from the specific HTML block
+        $pattern = "<h3 class=['""]h6['""]>Version:</h3>\s*<p[^>]*>([\d\.]+)</p>"
+        $match = [regex]::Match($html, $pattern)
+
+        if ($match.Success) {
+            return $match.Groups[1].Value
+        } else {
+            Write-Warning "⚠️ Could not extract Power BI version from HTML."
+            return $null
+        }
+    } catch {
+        Write-Error "❌ Failed to fetch Power BI version: $_"
+        return $null
+    }
+}
+
 
 # -------------- Run Functions -----------------
 
@@ -54,4 +77,9 @@ if ($vlcVersion) {
 $notepadVersion = Get-NotepadPPVersion
 if ($notepadVersion) {
     Write-Host "🔍 Notepad++ Latest Version: $notepadVersion" -ForegroundColor Green
+}
+
+$powerBIVersion = Get-PowerBIVersion
+if ($powerBIVersion) {
+    Write-Host "🔍 Power BI Desktop Latest Version: $powerBIVersion" -ForegroundColor Green
 }
