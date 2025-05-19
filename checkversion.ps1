@@ -89,6 +89,9 @@ function Get-7ZipVersion {
     }
 }
 
+# -------------- For Chrome, Adobe we will use winget -------------- 
+# winget search 
+
 
 
 # -------------- Run Functions -----------------
@@ -112,3 +115,4 @@ $zipVersion = Get-7ZipVersion
 if ($zipVersion) {
     Write-Host "🔍 7-Zip Latest Version: $zipVersion" -ForegroundColor Green
 }
+
