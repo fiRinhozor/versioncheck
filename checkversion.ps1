@@ -116,3 +116,6 @@ if ($zipVersion) {
     Write-Host "🔍 7-Zip Latest Version: $zipVersion" -ForegroundColor Green
 }
 
+
+## Need to decide if I'm going with scraping or choco. 
+
