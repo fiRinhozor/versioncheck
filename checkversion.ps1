@@ -89,7 +89,7 @@ function Get-7ZipVersion {
     }
 }
 
-# -------------- For Chrome, Adobe we will use winget -------------- 
+# -------------- For Chrome, Adobe, VLC, Notepad++, putty,  we will use winget -------------- 
 # winget search 
 
 
